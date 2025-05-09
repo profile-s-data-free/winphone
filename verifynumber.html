@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mobile Number Step</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      width: 300px;
+      border-radius: 25px;
+      border: 2px solid #4a5a61;
+      outline: none;
+      margin-top: 20px;
+    }
+    .progress-bar {
+      width: 60%;
+      margin: 30px auto;
+      background-color: #e0e0e0;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 20px;
+      width: 0%;
+      background-color: #4caf50;
+      transition: width 0.3s ease;
+    }
+    #facebookButton {
+      margin-top: 40px;
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background-color: grey;
+      color: white;
+      cursor: not-allowed;
+      transition: background-color 0.3s ease;
+    }
+    #facebookButton.active {
+      background-color: #1877f2;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Enter Your Mobile Number</h1>
+  <input type="text" id="mobileInput" maxlength="11" placeholder="Enter number" />
+
+  <div class="progress-bar">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+  <div id="stepLabel">Step 2 of 3</div>
+
+  <button id="facebookButton">Like us On Facebook</button>
+
+  <script>
+    const input = document.getElementById("mobileInput");
+    const progressFill = document.getElementById("progressFill");
+    const stepLabel = document.getElementById("stepLabel");
+    const fbButton = document.getElementById("facebookButton");
+
+    input.addEventListener("input", () => {
+      const value = input.value.trim();
+      if (/^\d{10,11}$/.test(value)) {
+        progressFill.style.width = "66%";
+        stepLabel.textContent = "Step 2 of 3";
+        fbButton.classList.add("active");
+        fbButton.disabled = false;
+      } else {
+        progressFill.style.width = "0%";
+        stepLabel.textContent = "Step 2 of 3";
+        fbButton.classList.remove("active");
+        fbButton.disabled = true;
+      }
+    });
+
+    fbButton.addEventListener("click", () => {
+      if (fbButton.classList.contains("active")) {
+        window.location.href = "nextpage.html"; // Change this to your actual next page
+      }
+    });
+  </script>
+
+</body>
+</html>
