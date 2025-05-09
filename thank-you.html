@@ -1,72 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Message</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f2f5; /* Light gray background */
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .container {
-            background-color: #1877F2; /* Facebook blue background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            max-width: 300px;
-            width: 100%;
-            box-sizing: border-box;
-            color: #fff; /* White text color */
-        }
-        .message {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #fff; /* White text color */
-        }
-        .spinner {
-            border: 8px solid #fff; /* White border for the spinner */
-            border-radius: 50%;
-            border-top: 8px solid #fff; /* White top border for the spinner */
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .hidden {
-            display: none;
-        }
-        #thank-you-message {
-            color: red; /* Red text color for the expired link message */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Application Status</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e0f7fa, #e3f2fd);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      max-width: 340px;
+      width: 100%;
+      box-sizing: border-box;
+      color: #333;
+    }
+
+    .message {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #1877F2;
+      font-weight: 600;
+    }
+
+    .spinner {
+      border: 6px solid #e0e0e0;
+      border-top: 6px solid #1877F2;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #thank-you-message {
+      font-size: 16px;
+      color: #2e7d32;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .highlight {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="message" id="status-message">
-            Verifying your details!
-        </div>
-        <div class="spinner" id="spinner"></div>
-        <div id="thank-you-message" class="hidden">Thank you for applying SmartPhone.</div>
+  <div class="container">
+    <div class="message" id="status-message" role="status" aria-live="polite">
+      Verifying your details...
     </div>
+    <div class="spinner" id="spinner" aria-hidden="true"></div>
+    <div id="thank-you-message" class="hidden">
+      <div class="highlight">🎉 Congratulations!</div>
+      Your application has been received.<br>
+      If selected, we’ll contact you shortly.<br>
+      Thank you for your interest in <strong>SmartPhone</strong>.
+    </div>
+  </div>
 
-    <script>
-        // Show "We will contact you soon, If you are the Winner" and hide spinner after 5 seconds
-        setTimeout(function() {
-            document.getElementById('spinner').classList.add('hidden');
-            document.getElementById('thank-you-message').classList.remove('hidden');
-            document.getElementById('status-message').textContent = 'Request Failed';
-        }, 5000);
-    </script>
+  <script>
+    setTimeout(function () {
+      // Show congratulations message
+      document.getElementById('spinner').classList.add('hidden');
+      document.getElementById('thank-you-message').classList.remove('hidden');
+      document.getElementById('status-message').textContent = 'Thank you!';
+
+      // Redirect after 3 more seconds (total 8s)
+      setTimeout(function () {
+        window.location.href = "https://dialog.lk/promos/win-iphone-15"; // Change to your actual URL
+      }, 3000);
+    }, 5000);
+  </script>
 </body>
 </html>
