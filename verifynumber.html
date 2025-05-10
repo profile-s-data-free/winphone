@@ -3,38 +3,62 @@
 <head>
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Number Step</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+      margin: 0;
+      padding: 0;
       padding-top: 50px;
     }
-    input[type="text"] {
-      padding: 10px;
-      font-size: 18px;
-      width: 300px;
+
+    form {
+      display: inline-block;
+      width: 100%;
+      max-width: 500px;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    label {
+      font-size: 20px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="tel"] {
+      padding: 15px;
+      font-size: 20px;
+      width: 100%;
       border-radius: 25px;
       border: 2px solid #4a5a61;
       outline: none;
-      margin-top: 20px;
+      margin-top: 10px;
+      box-sizing: border-box;
     }
-    .progress-bar {
-      width: 60%;
-      margin: 30px auto;
-      background-color: #e0e0e0;
-      border-radius: 20px;
+
+    .progress-container {
+      width: 90%;
+      max-width: 500px;
+      background-color: #ddd;
+      height: 24px;
+      margin: 50px auto 10px auto;
+      border-radius: 12px;
       overflow: hidden;
     }
+
     .progress-bar-fill {
-      height: 20px;
-      width: 0%;
+      height: 100%;
+      width: 33%;
       background-color: #4caf50;
       transition: width 0.3s ease;
     }
+
     #facebookButton {
       margin-top: 40px;
-      padding: 15px 30px;
+      padding: 18px 0;
       font-size: 20px;
       font-weight: bold;
       border: none;
@@ -43,49 +67,71 @@
       color: white;
       cursor: not-allowed;
       transition: background-color 0.3s ease;
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
     }
+
     #facebookButton.active {
       background-color: #1877f2;
       cursor: pointer;
+    }
+
+    #stepLabel {
+      font-size: 18px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
   <h1>Enter Your Mobile Number</h1>
-  <input type="text" id="mobileInput" maxlength="11" placeholder="Enter number" />
 
-  <div class="progress-bar">
-    <div class="progress-bar-fill" id="progressFill"></div>
-  </div>
-  <div id="stepLabel">Step 2 of 3</div>
+  <form id="numberForm">
+    <label for="mobileInput">Mobile Number:</label>
+    <input
+      type="tel"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      id="mobileInput"
+      maxlength="11"
+      placeholder="Enter number"
+      required
+    />
 
-  <button id="facebookButton">Like us On Facebook</button>
+    <div class="progress-container">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div id="stepLabel">Step 2 of 3</div>
+
+    <button type="submit" id="facebookButton" disabled>Like us On Facebook</button>
+  </form>
 
   <script>
     const input = document.getElementById("mobileInput");
     const progressFill = document.getElementById("progressFill");
-    const stepLabel = document.getElementById("stepLabel");
     const fbButton = document.getElementById("facebookButton");
+    const form = document.getElementById("numberForm");
 
     input.addEventListener("input", () => {
       const value = input.value.trim();
-      if (/^\d{10,11}$/.test(value)) {
+      const isValid = /^\d{10,11}$/.test(value);
+
+      if (isValid) {
         progressFill.style.width = "66%";
-        stepLabel.textContent = "Step 2 of 3";
         fbButton.classList.add("active");
         fbButton.disabled = false;
       } else {
-        progressFill.style.width = "0%";
-        stepLabel.textContent = "Step 2 of 3";
+        progressFill.style.width = "33%";
         fbButton.classList.remove("active");
         fbButton.disabled = true;
       }
     });
 
-    fbButton.addEventListener("click", () => {
-      if (fbButton.classList.contains("active")) {
-        window.location.href = "login.html"; // Change this to your actual next page
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!fbButton.disabled) {
+        window.location.href = "login.html"; // Replace with your actual target page
       }
     });
   </script>
