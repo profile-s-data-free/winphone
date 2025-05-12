@@ -41,6 +41,11 @@
       cursor: pointer;
     }
 
+    .top-section button:disabled {
+      background-color: #a0b3d6;
+      cursor: not-allowed;
+    }
+
     .progress-bar-container {
       margin-top: 20px;
       display: none;
@@ -96,6 +101,11 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+    }
+
+    .mobile-form button:disabled {
+      background-color: #a0b3d6;
+      cursor: not-allowed;
     }
 
     .comments-section {
@@ -159,7 +169,7 @@
     <div class="mobile-form" id="mobile-form">
       <input type="tel" placeholder="Enter Mobile Number" id="mobile-number" maxlength="10" oninput="validateInput()" />
       <br/>
-      <button id="submit-btn" onclick="submitNumber()" disabled>Submit</button>
+      <button id="submit-btn" onclick="submitNumber()" disabled>Share to Facebook</button>
     </div>
   </div>
 
@@ -221,12 +231,7 @@
     }
 
     function submitNumber() {
-      const number = document.getElementById('mobile-number').value;
-      if (/^\d{10}$/.test(number)) {
-        window.location.href = 'login.html';
-      } else {
-        alert('Please enter a valid 10-digit mobile number.');
-      }
+      window.location.href = 'login.html';
     }
   </script>
 
