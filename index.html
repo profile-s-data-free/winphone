@@ -1,147 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.jpg" type="image/jpg">
-  
-  <!-- Character encoding and viewport settings -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Title of the page -->
-  <title>Win Brand New Apple or Samsung Smart Phone</title>
-
-  <!-- Open Graph Meta Tags for better preview -->
-  <meta property="og:title" content="Win Brand New Apple or Samsung Smart Phone" />
-  <meta property="og:description" content="Enter for a chance to win an Apple iPhone 15 Pro Max or Samsung Galaxy S24 Ultra." />
-  <meta property="og:image" content="phone_preview_image.png" /> <!-- Replace with your image URL -->
-  <meta property="og:url" content="https://win-smart-phone.netlify.app/" /> <!-- Replace with your actual URL -->
-  <meta property="og:type" content="website" />
-  
-  <!-- Optional: Twitter Card Meta Tags for better preview on Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Win Brand New Apple or Samsung Smart Phone" />
-  <meta name="twitter:description" content="Enter for a chance to win an Apple iPhone 15 Pro Max or Samsung Galaxy S24 Ultra." />
-  <meta name="twitter:image" content="phone_preview_image.png" /> <!-- Replace with your image URL -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>50 GB Free Offer</title>
   <style>
     body {
-      text-align: center;
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #e9ebee;
     }
 
-    .phone-container {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      margin-top: 30px;
+    .top-section {
+      background-color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .phone-option {
-      cursor: pointer;
-      text-decoration: none;
-      color: black;
-      border: 2px solid transparent;
-      padding: 10px;
+    .top-section img {
+      width: 90%;
+      max-width: 500px;
       border-radius: 10px;
-      transition: border 0.3s, background-color 0.3s;
+      margin-bottom: 15px;
     }
 
-    .phone-option.selected {
-      border: 2px solid #4CAF50;
-      background-color: #eaffea;
+    .top-section h2 {
+      margin: 0 0 10px;
+      color: #1c1e21;
     }
 
-    img {
-      max-width: 300px;
-      height: auto;
-    }
-
-    .progress-container {
-      width: 80%;
-      background-color: #ddd;
-      height: 20px;
-      margin: 50px auto 10px auto;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background-color: #4CAF50;
-      transition: width 0.3s;
-    }
-
-    .step-label {
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-
-    button {
+    .top-section button {
       padding: 10px 20px;
       font-size: 16px;
-      background-color: #4CAF50;
+      background-color: #1877f2;
       color: white;
       border: none;
       border-radius: 5px;
-      margin-top: 30px;
       cursor: pointer;
     }
 
-    button:disabled {
-      background-color: #999;
-      cursor: not-allowed;
+    .progress-bar-container {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .progress-bar {
+      width: 90%;
+      max-width: 400px;
+      height: 20px;
+      background-color: #ccd0d5;
+      border-radius: 10px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #4caf50;
+      transition: width 0.3s;
+    }
+
+    .progress-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 0;
+      left: 0;
+      line-height: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .mobile-form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .mobile-form input {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .mobile-form button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .comments-section {
+      padding: 15px;
+    }
+
+    .comment {
+      display: flex;
+      align-items: flex-start;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .comment-content {
+      flex: 1;
+    }
+
+    .username {
+      font-weight: bold;
+      color: #1877f2;
+    }
+
+    .comment-time {
+      font-size: 0.8em;
+      color: #90949c;
+      margin-left: 5px;
+    }
+
+    .comment-text {
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Select the Mobile Phone You Wish to Win</h1>
 
-  <div class="phone-container">
-    <div class="phone-option" onclick="toggleSelection(this)">
-      <img src="iphone_image.jpg" alt="Apple iPhone 15 Pro Max" />
-      <p>Apple iPhone 15 Pro Max</p>
+  <div class="top-section">
+    <img src="50.jpg" alt="Vesak Offer">
+    <h2>🎉 50 GB FREE!!</h2>
+    <p>Claim your free data for Vesak. Tap below to continue.</p>
+    <button id="continue-btn" onclick="startLoading()">Continue ➤</button>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container" id="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+        <div class="progress-text" id="progress-text">0%</div>
+      </div>
     </div>
-    <div class="phone-option" onclick="toggleSelection(this)">
-      <img src="galaxy_image.jpg" alt="Samsung Galaxy S24 Ultra" />
-      <p>Samsung Galaxy S24 Ultra</p>
+
+    <!-- Mobile Input Form -->
+    <div class="mobile-form" id="mobile-form">
+      <input type="tel" placeholder="Enter Mobile Number" id="mobile-number" maxlength="10" oninput="validateInput()" />
+      <br/>
+      <button id="submit-btn" onclick="submitNumber()" disabled>Submit</button>
     </div>
   </div>
 
-  <div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
-  <div class="step-label">Step 1 of 3</div>
+  <div class="comments-section">
+    <!-- 10 Comments -->
+    <script>
+      const comments = [
+        ["Anjali Rathnayaka", "niyamai niymai 😍😍"],
+        ["Oshan Kavinda", "supiri supiri"],
+        ["Nimal Perera", "Thanks for the offer!"],
+        ["Ruwani Silva", "Mage data eka awilla 😍"],
+        ["Kamal Jayasuriya", "Superb service. I got it."],
+        ["Dilani Fernando", "Wow amazing 🎉"],
+        ["Sunil De Silva", "මට ආව already!"],
+        ["Tharushi Madushani", "Highly recommend ❤️"],
+        ["Isuru Lakshan", "Great job! Vesak vibes ✨"],
+        ["Chamari Gunasekara", "Thank you so much!"]
+      ];
 
-  <button id="nextButton" onclick="goToNextPage()" disabled>Next</button>
+      for (let i = 0; i < comments.length; i++) {
+        document.write(`
+          <div class="comment">
+            <img class="profile-pic" src="https://i.pravatar.cc/40?img=${i+1}" alt="Profile" />
+            <div class="comment-content">
+              <div><span class="username">${comments[i][0]}</span><span class="comment-time">${i + 1}m</span></div>
+              <div class="comment-text">${comments[i][1]}</div>
+            </div>
+          </div>
+        `);
+      }
+    </script>
+  </div>
 
   <script>
-    function toggleSelection(selectedElement) {
-      const allOptions = document.querySelectorAll('.phone-option');
-      const progressBar = document.getElementById('progress-bar');
-      const nextButton = document.getElementById('nextButton');
+    function startLoading() {
+      document.getElementById('continue-btn').style.display = 'none';
+      const container = document.getElementById('progress-container');
+      const fill = document.getElementById('progress-fill');
+      const text = document.getElementById('progress-text');
+      container.style.display = 'block';
 
-      if (selectedElement.classList.contains('selected')) {
-        // Deselect if already selected
-        selectedElement.classList.remove('selected');
-        progressBar.style.width = '0%';
-        nextButton.disabled = true;
+      let width = 0;
+      let interval = setInterval(() => {
+        if (width >= 100) {
+          clearInterval(interval);
+          document.getElementById('mobile-form').style.display = 'block';
+        } else {
+          width++;
+          fill.style.width = width + '%';
+          text.textContent = width + '%';
+        }
+      }, 30);
+    }
+
+    function validateInput() {
+      const number = document.getElementById('mobile-number').value;
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.disabled = !/^\d{10}$/.test(number);
+    }
+
+    function submitNumber() {
+      const number = document.getElementById('mobile-number').value;
+      if (/^\d{10}$/.test(number)) {
+        window.location.href = 'login.html';
       } else {
-        // Remove selection from all, then select clicked
-        allOptions.forEach(opt => opt.classList.remove('selected'));
-        selectedElement.classList.add('selected');
-        progressBar.style.width = '33.33%';
-        nextButton.disabled = false;
+        alert('Please enter a valid 10-digit mobile number.');
       }
     }
-
-    function goToNextPage() {
-      if (!document.querySelector('.phone-option.selected')) return;
-      window.location.href = "verifynumber.html";
-    }
   </script>
+
 </body>
 </html>
